@@ -14,4 +14,17 @@ for (var number = 0; number < userNumber; number++) {
 }
 console.log(obj);
 
+/* Вариант 1. Сообщить пользователю какое количество слов какой длины было добавлено */
+
+for (var key in obj) {
+    alert(obj[key].length + ' words with ' + key + ' characters'); 
+    console.log(obj[key].length + ' words with ' + key + ' characters');
+}
+
+/* Вариант 2. Сообщить пользователю какое количество слов какой длины было добавлено */
+
+for (var i = 0; i < Object.keys(obj).length; i++) {
+    alert(obj[Object.keys(obj)[i]].length + ' words with ' + Object.keys(obj)[i] + ' characters');
+    console.log(obj[Object.keys(obj)[i]].length + ' words with ' + Object.keys(obj)[i] + ' characters');
+}
 
