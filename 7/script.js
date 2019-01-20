@@ -28,6 +28,7 @@ function exchange(from, to) {
 
 exchange(+prompt('Enter value in UAH'), prompt('Select the currency to convert: \n usd \n eur \n rub \n pln'))
 
+
 /* 2. Поместить предыдущее задание в ф-ю. Функция не должна обращаться к данным за своими пределами - только через аргументы. */
 
 function createString(userNumber, minNumber, maxNumber) {
@@ -52,3 +53,22 @@ function createString(userNumber, minNumber, maxNumber) {
 }
 
 createString(+prompt('How many values ​​need to create?'), +prompt('Minimum number of characters'), +prompt('Maximum number of characters'))
+
+
+/* 3. Из второго задания разбить все возможные логически несвязанные блоки на отдельные функции. */
+
+
+
+/* 4. Написать функцию, повторяющую функционал метода forEach массива. 
+    Вызов должен выглядеть следующим образом: fEach([1,2,3,4], function(num) { }) */
+
+function fEach(arr, cb) {
+    for (var i = 0; i < arr.length; i++) {
+        var element = arr[i];
+        cb(element);
+    }
+}
+
+fEach([1,2,3,4], function(num) {
+    console.log(num);
+ }); 
