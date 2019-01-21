@@ -57,7 +57,30 @@ createString(+prompt('How many values ​​need to create?'), +prompt('Minimum 
 
 /* 3. Из второго задания разбить все возможные логически несвязанные блоки на отдельные функции. */
 
+function createString(userNumber, minNumber, maxNumber) {
+    var letters = 'abcdefghijklmnopqrstuvwxyz';
+        arr = [];
+        obj = {}; 
 
+    for (var number = 0; number < userNumber; number++) {
+        var text = '';
+        for (var i = 0; i < Math.floor(Math.random() * (maxNumber - minNumber + 1)) + minNumber; i++) {
+            text += letters.charAt(Math.floor(Math.random() * letters.length));
+        }  
+        obj[text.length] = obj[text.length] ? obj[text.length].concat([text]) : [text];
+    }
+
+    console.log(obj);
+}
+
+function createAnswer() {
+    for (var key in obj) {
+        console.log(obj[key].length + ' words with ' + key + ' characters');
+    }
+}
+
+createString(+prompt('How many values ​​need to create?'), +prompt('Minimum number of characters'), +prompt('Maximum number of characters'));
+createAnswer()  
 
 /* 4. Написать функцию, повторяющую функционал метода forEach массива. 
     Вызов должен выглядеть следующим образом: fEach([1,2,3,4], function(num) { }) */
