@@ -12,7 +12,7 @@ console.log(newArr);
 function newFilter(arr, cb) {
   var newArr = [];
   for (var i = 0; i < arr.length; i++) {
-  	if (arr[i] > 0) {
+  	if (cb(arr[i])) {
     	newArr.push(arr[i]);
     }
   }
@@ -20,5 +20,5 @@ function newFilter(arr, cb) {
 }
 
 newFilter([1, -1, 2, -2, 3], function(num){
-	return num;
+	return num < 0;
 })
