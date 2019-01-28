@@ -2,7 +2,6 @@ var letters = 'abcdefghijklmnopqrstuvwxyz',
     userNumber = +prompt('How many values ​​need to create?'),
     minNumber = +prompt('Minimum number of characters'),
     maxNumber = +prompt('Maximum number of characters'),
-    arr = [],
     obj = {};
 
 for (var number = 0; number < userNumber; number++) {
