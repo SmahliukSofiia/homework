@@ -87,8 +87,7 @@ createAnswer()
 
 function fEach(arr, cb) {
     for (var i = 0; i < arr.length; i++) {
-        var element = arr[i];
-        cb(element);
+        cb(arr[i]);
     }
 }
 
