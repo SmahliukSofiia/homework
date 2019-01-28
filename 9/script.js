@@ -1,11 +1,8 @@
 function clock() {
     var date = new Date(),
-        hours = date.getHours(),
-        minutes = date.getMinutes(),
-        seconds = date.getSeconds();
-        hours = checkTime(hours),
-        minutes = checkTime(minutes),
-        seconds = checkTime(seconds);
+        hours = checkTime(date.getHours()),
+        minutes = checkTime(date.getMinutes()),
+        seconds = checkTime(date.getSeconds());
 
     document.getElementById('clock').innerText = hours + ':' + minutes + ':' + seconds;
 
