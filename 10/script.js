@@ -7,31 +7,29 @@ function clock() {
     document.getElementById('clock').innerText = hours + ':' + minutes + ':' + seconds;
 
     setTimeout(clock, 1000);
-
-    
 }
 
-clock() 
+clock()
 
 function checkTime(i) {
     return (i < 10) ? ('0' + i) : i;
 }
 
-function MyConstructor(title, description, currentTime, timeForTask) {
+function MyConstructor(title, description, timeForTask) {
     this.title = title;
     this.description = description;
-    this.currentTime = Math.floor(currentTime.getTime() / 1000);
-    this.timeForTask = Math.floor(timeForTask / 1000);
+    this.timeForTask = timeForTask;
 }
 
 MyConstructor.prototype.getTask = function() {
-    if (this.currentTime === this.timeForTask) {
+    var currentTime = new Date().getTime();
+    if (Math.floor(currentTime / 1000) === Math.floor(this.timeForTask / 1000)) {
         console.log(task)
     }
 }
 
-var task = new MyConstructor('Task 1', 'Desc 1', new Date(), new Date().setHours(15, 48, 30))
+var task = new MyConstructor('Task 1', 'Desc 1', new Date().setHours(17, 33, 10))
 
-console.log(task)
-
-task.getTask()
+var timerId = setInterval(function () {
+    task.getTask()
+}, 1000)
