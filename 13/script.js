@@ -15,7 +15,7 @@ Resource.prototype = {
     isReadyToMove: function(distance) {
         if (this.distanceAtMoment >= distance) {
             console.log(this.name + ' is ready to move');
-        } else console.log(this.name + ' is not ready to move')
+        } else console.log(this.name + ' is not ready to move');
     },
     restoreHealth: function() {
         this.health = this.maxHealth;
@@ -27,7 +27,7 @@ Resource.prototype = {
         if (this.health > damage) {
             console.log(this.name + ' is ready to fight');
         } else {
-            console.log(this.name + ' is not ready to fight')
+            console.log(this.name + ' is not ready to fight');
         }
     },
     clone: function() {
@@ -42,7 +42,7 @@ Squad.prototype = {
     },
     isReadyToMove: function(distance) {
        return this.stuff.every(function (el) {
-            return el.distanceAtMoment >= distance
+            return el.distanceAtMoment >= distance;
         })
     },
     moveResources: function(distance) {
@@ -63,14 +63,14 @@ Squad.prototype = {
     },
     restore: function(index) {
         if (index >= 0) {
-            this.stuff[index].distanceAtMoment += this.stuff[index].distanceAll - this.stuff[index].distanceAtMoment
+            this.stuff[index].distanceAtMoment += this.stuff[index].distanceAll - this.stuff[index].distanceAtMoment;
         } else {this.stuff.forEach(function(def) {
             def.distanceAtMoment = def.distanceAll;
         })}
     },
     getReadyResources: function(distance) {
         return this.stuff.filter(function(el) {
-            return el.distanceAtMoment >= distance
+            return el.distanceAtMoment >= distance;
         })
     }, 
     combineResources: function(otherEl) {
@@ -79,9 +79,9 @@ Squad.prototype = {
     isReadyToFight: function(damage) {
         this.stuff.forEach(function(elReady) {
             if (elReady.health > damage) {
-                console.log(true);
+                return true;
             } else {
-                console.log(false)
+                return false;
             }
         }) 
     },
@@ -89,11 +89,7 @@ Squad.prototype = {
         [this.stuff[first], this.stuff[second]] = [this.stuff[second], this.stuff[first]];
     },
     clone: function(index) {
-        var cloneResource = new Resource();
-        for (var key in this.stuff[index]) {
-            cloneResource[key] = this.stuff[index][key];
-        }
-        return cloneResource;
+        return new Resource(this.stuff[index].name, this.stuff[index].health, this.stuff[index].maxHealth, this.stuff[index].distanceAll, this.stuff[index].distanceAtMoment);
     }
 }
 
@@ -102,36 +98,36 @@ var resource = new Resource();
 
 var resource1 = new Resource('soldier 1', 30, 70, 70, 35),
     resource2 = new Resource('horse 1', 5, 90, 90, 30),
-    resource3 = new Resource('car 1', 50, 100, 100, 30)
+    resource3 = new Resource('car 1', 50, 100, 100, 30);
 
-squad.addResource(resource1)
-squad.addResource(resource2)
-squad.addResource(resource3)
+squad.addResource(resource1);
+squad.addResource(resource2);
+squad.addResource(resource3);
 
-// squad.moveResources(20)
+squad.moveResources(20);
 
-// var newResources = squad.combineResources([new Resource('soldier2', 30, 70, 70, 35), new Resource('horse2', 30, 70, 70, 35), new Resource('car2', 30, 70, 70, 35)])
+var newResources = squad.combineResources([new Resource('soldier2', 30, 70, 70, 35), new Resource('horse2', 30, 70, 70, 35), new Resource('car2', 30, 70, 70, 35)]);
 
-// var readyResource = squad.getReadyResources(12)
+var readyResource = squad.getReadyResources(12);
 
-// squad.rebuildResources(2, 0)
+squad.rebuildResources(2, 0);
 
-// squad.isReadyToFight(20)
+squad.isReadyToFight(20);
 
-// var cloneResource = squad.clone(2)
+var cloneResource = squad.clone(0);
 
-// squad.restoreHealth(0)
+squad.restoreHealth(0);
 
-resource1.isReadyToMove(20)
-resource1.restoreHealth()
-resource1.restore()
-resource1.isReadyToFight(80)
-var clone = resource1.clone()
+resource1.isReadyToMove(20);
+resource1.restoreHealth();
+resource1.restore();
+resource1.isReadyToFight(80);
+var clone = resource1.clone();
 
-console.log(squad)
-// console.log(readyResource)
-// console.log(newResources)
-// console.log(cloneResource)
+console.log(squad);
+console.log(readyResource);
+console.log(newResources);
+console.log(cloneResource);
 
-console.log(resource1)
-console.log(clone)
+console.log(resource1);
+console.log(clone);
