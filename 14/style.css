@@ -1,0 +1,17 @@
+.clock {
+    font-size: 30px;
+}
+
+.block {
+    display: flex;
+}
+
+.task {
+    font-size: 20px;
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    border: 1px solid black;
+    margin: 15px 10px 0 0;
+    padding: 5px;
+}
