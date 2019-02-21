@@ -3,15 +3,22 @@ function MyConstructor(title, timeForTask) {
     this.timeForTask = timeForTask;
 }
 
-MyConstructor.prototype.getTask = function(time) {
+MyConstructor.prototype.getTask = function(time, index) {
     var currentTime = new Date().getTime();
     if (Math.floor(currentTime / 1000) === Math.floor(this.timeForTask / 1000)) {
-        var parent = document.getElementById('block');
-        var div = document.createElement('div');
-        div.innerHTML = this.title + "<br>" + time;
-        parent.appendChild(div);
-        div.setAttribute('class', 'task')
+        createTag('block', 'div', this.title + "\r\n" + time, 'task', 'task' + index);
+        createTag('task' + index, 'button', 'X', 'button', '', 'onclick');
     }
+}
+
+function createTag(parentTag, tagName, content, classValue, id, eventName, func) {
+    var parent = document.getElementById(parentTag);
+    var tag = document.createElement(tagName);
+    tag.textContent = content;
+    parent.appendChild(tag);
+    tag.className = classValue;
+    tag.id = id;
+    tag.addEventListener(eventName, func);
 }
 
 var tasks = [];
@@ -31,7 +38,7 @@ function clock() {
     document.getElementById('clock').innerText = showTime;
 
     for (var i = 0; i < tasks.length; i++) {
-        tasks[i].getTask(showTime)
+        tasks[i].getTask(showTime, i)
     }
 
     setTimeout(clock, 1000);
