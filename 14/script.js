@@ -6,8 +6,11 @@ function MyConstructor(title, timeForTask) {
 MyConstructor.prototype.getTask = function(time, index) {
     var currentTime = new Date().getTime();
     if (Math.floor(currentTime / 1000) === Math.floor(this.timeForTask / 1000)) {
-        createTag('block', 'div', this.title + "\r\n" + time, 'task', 'task' + index);
-        createTag('task' + index, 'button', 'X', 'button', '', 'onclick');
+        var element = document.getElementById('task' + index);
+        if (element) {
+            second_block.removeChild(element);
+            first_block.appendChild(element);
+        }
     }
 }
 
@@ -23,8 +26,15 @@ function createTag(parentTag, tagName, content, classValue, id, eventName, func)
 
 var tasks = [];
 
-for (var i = 1; i < 6; i++) {
-    tasks.push(new MyConstructor('Task ' + i, (new Date().getTime() + 2000 * i)))
+for (var i = 1; i < 7; i++) {
+    tasks.push(new MyConstructor('Task ' + i, new Date().getTime() + 2000 * i))
+}
+
+for (var i = 0; i < tasks.length; i++) {
+    createTag('second_block', 'div', tasks[i].title + "\r\n" + new Date(tasks[i].timeForTask).toLocaleTimeString(), 'task', 'task' + i);
+    createTag('task' + i, 'button', 'X', 'button', '', 'click', function remove() {
+        this.parentElement.remove();
+    });
 }
 
 function clock() {
