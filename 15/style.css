@@ -1,0 +1,39 @@
+.clock {
+    font-size: 30px;
+}
+
+.block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.first_block {
+    height: 250px;
+    color: white;
+}
+
+.first_block .task {
+    background-color: grey;
+}
+
+.task {
+    font-size: 20px;
+    height: 200px;
+    width: 200px;
+    background-color: pink;
+    border: 1px solid black;
+    margin: 15px 10px 0 0;
+    padding: 5px;
+    position: relative;
+    white-space: pre-line;
+}
+
+.button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    height: 20px;
+    width: 20px;
+    background-color: white;
+    padding: 0;
+}
