@@ -14,8 +14,8 @@ Resource.prototype = {
     constructor: Resource,
     isReadyToMove: function(distance) {
         if (this.distanceAtMoment >= distance) {
-            console.log(this.name + ' is ready to move');
-        } else console.log(this.name + ' is not ready to move');
+            return true;
+        } else return false;
     },
     restoreHealth: function() {
         this.health = this.maxHealth;
@@ -25,10 +25,8 @@ Resource.prototype = {
     },
     isReadyToFight: function(damage) {
         if (this.health > damage) {
-            console.log(this.name + ' is ready to fight');
-        } else {
-            console.log(this.name + ' is not ready to fight');
-        }
+            return true;
+        } else return false;
     },
     clone: function() {
         return new Resource(this.name, this.health, this.maxHealth, this.distanceAll, this.distanceAtMoment);
