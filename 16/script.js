@@ -20,19 +20,15 @@ var rep = new Repository();
 
 
 function Cards() {
-
+    this.page = 1;
+    this.arr = [];
 }
-
-
-var page = 1;
-
-var arr = [];
 
 Cards.prototype = {
     collectData: function(url, page) {
         rep.get(url + '?page=' + page, function getHeroes(result) {
             var heroes = result.results;
-            arr = arr.concat(result);
+            card.arr = card.arr.concat(result);
             card.showHeroes(heroes);
         })
     },
@@ -84,23 +80,24 @@ header.appendChild(myBtnN);
 
 
 myBtnN.addEventListener('click', function() {
-    if(page <= 9) {
-        if (arr.length < page) {
-            card.collectData('https://swapi.co/api/people/', page);
+    if(card.page <= 9) {
+        if (card.arr.length < card.page) {
+            card.collectData('https://swapi.co/api/people/', card.page);
         } else {
-            heroes = arr[page - 1].results;
+            heroes = card.arr[card.page - 1].results;
             card.showHeroes(heroes)
         }
-        ++page;
+        ++card.page;
         card.removeContent();
     }
 })
 
 myBtnP.addEventListener('click', function() {
-    if (page > 2) {
-        heroes = arr[page - 3].results;
+    if (card.page > 2) {
+        heroes = card.arr[card.page - 3].results;
         card.showHeroes(heroes)
-        --page;
+        --card.page;
         card.removeContent();
     }
+}) 
 }) 
