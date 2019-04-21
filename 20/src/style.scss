@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.slider {
+    overflow: hidden;
+
+    &-wrapper{
+        display: flex;
+        height: 100vh;
+
+        &_img {
+            text-align: center;
+        }
+    }
+
+    .image {
+        height: 100vh;
+        width: auto;
+    }
+
+    &-arrows {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+        width: 100%;
+        position: absolute;
+        top: 45%;
+        color: lightgrey;
+        font-size: 30px;
+    }
+}
